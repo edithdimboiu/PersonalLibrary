@@ -1,6 +1,112 @@
-#root {
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+:root {
+  --color-primary: #66ae9b;
+  --color-primary-light: #84c0b0;
+  --color-text: #dee2e6;
+  --color-text-dark: #465d74;
+  --color-background-body: #e0eae6;
+}
+
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+} */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-background-body);
+  padding: 2.4rem;
+}
+
+/* Navigation  */
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 7.2rem;
+  padding: 0 3.2rem;
+  background-color: var(--color-primary);
+  border-radius: 0.9rem;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+
+.search {
+  border: none;
+  padding: 1.1rem 1.6rem;
+  font-size: 1.8rem;
+  border-radius: 0.7rem;
+  width: 40rem;
+  transition: all 0.3s;
+  color: var(--color-text);
+  background-color: var(--color-primary-light);
+}
+
+.search::placeholder {
+  color: var(--color-text-dark);
+}
+
+.search:focus {
+  outline: none;
+  box-shadow: 0 2.4rem 2.4rem rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.num-results {
+  font-size: 1.8rem;
+}
+/* 60em = 960px */
+@media screen and (max-width: 60em) {
+  .search {
+    width: 30rem;
+  }
+}
+/* 46.25em = 740px */
+@media screen and (max-width: 46.25em) {
+  .nav-bar {
+    flex-direction: column;
+    height: auto;
+    align-items: end;
+  }
+
+  h1 {
+    align-self: flex-start;
+    font-size: 2.4rem;
+  }
+  .search {
+    margin-top: 1rem;
+    width: max-content;
+    font-size: 1.6rem;
+  }
+
+  .num-results {
+    margin: 1rem 0;
+    font-size: 1.4rem;
+  }
+}
+/* 21em = 336px */
+@media screen and (max-width: 21em) {
+  .search {
+    max-width: 95%;
+  }
 }
