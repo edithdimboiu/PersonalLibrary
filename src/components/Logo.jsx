@@ -1,5 +1,5 @@
 const Logo = () => {
-  return <h1>Your Personal Library</h1>;
+  return <h1>My Library</h1>;
 };
 
 export default Logo;
