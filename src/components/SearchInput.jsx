@@ -1,14 +1,11 @@
-import { useState } from "react";
-
-export default function SearchInput() {
-    const [query, setQuery] = useState("");
-
-    return (
+export default function SearchInput({ query, handleOnChange }) {
+  return (
     <input
       className="search"
       type="text"
       placeholder="Search book..."
       value={query}
-      onChange={(e) => setQuery(e.target.value)}
-    />)
+      onChange={handleOnChange}
+    />
+  );
 }

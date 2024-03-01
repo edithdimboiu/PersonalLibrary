@@ -1,14 +1,22 @@
 import "./App.css";
-import Main from "./components/Main";
 import Navigation from "./components/Navigation";
+import SearchInput from "./components/SearchInput";
+import Main from "./components/Main";
+import { useState } from "react";
 
-function App() {
+export default function App() {
+  const [query, setQuery] = useState("");
+
+  function handleOnChange(e) {
+    setQuery(e.target.value);
+  }
+
   return (
     <>
-      <Navigation />
+      <Navigation>
+        <SearchInput query={query} handleOnChange={handleOnChange} />
+      </Navigation>
       <Main />
     </>
   );
 }
-
-export default App;
