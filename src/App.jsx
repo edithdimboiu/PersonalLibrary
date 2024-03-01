@@ -18,9 +18,9 @@ export default function App() {
 
   return (
     <>
-      <Navigation>
+      <Navigation numberResults={books.length}>
         <SearchInput query={query} handleOnChange={handleOnChange} />
-      </Navigation>
+      </Navigation >
       <Main>
         <Section>
           {isLoading && <Loader />}
