@@ -1,10 +1,3 @@
-import Section from "./Section";
-
-export default function Main() {
-  return (
-    <main>
-      <Section />
-      <Section />
-    </main>
-  );
+export default function Main({ children }) {
+  return <main>{children}</main>;
 }
