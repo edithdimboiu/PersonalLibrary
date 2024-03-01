@@ -1,9 +1,9 @@
 import { CiCalendar } from "react-icons/ci";
 import noImage from "../assets/noImage.jpeg";
 
-export default function Card({ book }) {
+export default function Card({ book, handleOnCardClick }) {
   return (
-    <li>
+    <li onClick={() => handleOnCardClick(book.id)}>
       <img
         src={book.volumeInfo.imageLinks?.smallThumbnail || noImage}
         alt={`${book.volumeInfo?.title} image`}
