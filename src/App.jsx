@@ -8,6 +8,7 @@ import Loader from "./components/Loader";
 import { useGet } from "./hooks/useGet";
 import Section from "./components/Section";
 import Alert from "./components/Alert";
+import MyLibrary from "./components/MyLibrary";
 
 export default function App() {
   const [query, setQuery] = useState("");
@@ -52,7 +53,7 @@ export default function App() {
           )}
         </Section>
         <Section>
-          <BookList books={myLibrary} />
+          <MyLibrary books={myLibrary} />
         </Section>
       </Main>
     </>
