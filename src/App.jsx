@@ -7,11 +7,14 @@ import BookList from "./components/BookList";
 import Loader from "./components/Loader";
 import { useGet } from "./hooks/useGet";
 import Section from "./components/Section";
+import Alert from "./components/Alert";
 
 export default function App() {
   const [query, setQuery] = useState("");
   const { books, error, isLoading } = useGet(query);
   const [myLibrary, setMyLibrary] = useState([]);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
   function handleOnChange(e) {
     setQuery(e.target.value);
@@ -22,7 +25,13 @@ export default function App() {
     if (!isDuplicate) {
       setMyLibrary([...myLibrary, selectedBook]);
     } else {
-      console.log("This book already exists in your library!");
+      setAlertMessage("This book already exists in your library!");
+
+      setShowAlert(true);
+
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 5000);
     }
   };
 
@@ -38,6 +47,9 @@ export default function App() {
             <BookList books={books} handleOnCardClick={addToMyLibrary} />
           )}
           {error && <h2>There was an error!</h2>}
+          {showAlert && (
+            <Alert message={alertMessage} onClose={() => setShowAlert(false)} />
+          )}
         </Section>
         <Section>
           <BookList books={myLibrary} />
