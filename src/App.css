@@ -118,7 +118,7 @@ h2 {
   right: 0.8rem;
   aspect-ratio: 1;
   border-radius: 50%;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* Loader  */
@@ -238,12 +238,16 @@ h2 {
 /* My Library  */
 
 .summary {
+  position: sticky;
+  top: 0;
   display: grid;
+  background-color: inherit;
   align-items: center;
   justify-items: center;
   height: 28rem;
   border-bottom: 1px solid var(--color-primary);
   font-size: 1.6rem;
+  z-index: 1;
 }
 
 /* Responsive design  */

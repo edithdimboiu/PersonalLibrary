@@ -16,7 +16,7 @@ function MyLibrary({ books }) {
   };
 
   return (
-    <ul className="list list-books">
+    <>
       {books.length > 0 && (
         <div className="summary">
           <h2>
@@ -25,15 +25,17 @@ function MyLibrary({ books }) {
           </h2>
         </div>
       )}
-      {books.map(book => (
-        <MyLibraryCard
-          book={book}
-          key={book.id}
-          readBooks={readBooks}
-          markAsRead={markAsRead}
-        ></MyLibraryCard>
-      ))}
-    </ul>
+      <ul className="list list-books">
+        {books.map(book => (
+          <MyLibraryCard
+            book={book}
+            key={book.id}
+            readBooks={readBooks}
+            markAsRead={markAsRead}
+          ></MyLibraryCard>
+        ))}
+      </ul>
+    </>
   );
 }
 
