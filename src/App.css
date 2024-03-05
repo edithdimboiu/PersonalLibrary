@@ -90,8 +90,7 @@ h1 {
 /* Section  */
 
 .section {
-  width: 42rem;
-  max-width: 42rem;
+  width: 50rem;
   background-color: var(--color-background-section);
   border-radius: 0.9rem;
   color: var(--color-text-dark);
@@ -124,12 +123,16 @@ h2 {
 /* Loader  */
 
 .loader {
+  align-content: center;
   border: 16px solid var(--color-background-body);
   border-top: 16px solid var(--color-loader);
   border-radius: 50%;
   width: 120px;
   height: 120px;
   animation: spin 2s linear infinite;
+  position: absolute;
+  top: 3rem;
+  left: 40%;
 }
 
 @keyframes spin {
@@ -257,6 +260,9 @@ h2 {
   .search {
     width: 30rem;
   }
+  .summary {
+    font-size: 1.4rem;
+  }
 }
 /* 46.25em = 740px */
 @media screen and (max-width: 46.25em) {
@@ -279,6 +285,41 @@ h2 {
   .num-results {
     margin: 1rem 0;
     font-size: 1.4rem;
+  }
+}
+/* 37.5em = 600px */
+
+@media screen and (max-width: 37.5em) {
+  .alert-container {
+    top: 2.4rem;
+    right: 2.1rem;
+  }
+
+  main {
+    flex-direction: column;
+    height: fit-content;
+  }
+  .list li {
+    column-gap: 1.2rem;
+    align-items: center;
+    min-height: 7rem;
+    padding: 1.6rem 3.2rem;
+  }
+
+  .section:first-child {
+    max-height: 50rem;
+  }
+  .section {
+    width: 100%;
+    min-height: 30rem;
+    overflow-y: auto;
+  }
+  .summary {
+    height: 14rem;
+    font-size: 1.2rem;
+  }
+  .summary h2 {
+    padding: 1rem 1.5rem;
   }
 }
 /* 21em = 336px */
