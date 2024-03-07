@@ -263,13 +263,18 @@ h2 {
   position: sticky;
   top: 0;
   display: grid;
+  grid-template-rows: 3fr 1fr auto;
+  grid-template-columns: 2fr 1fr;
   background-color: inherit;
   align-items: center;
   justify-items: center;
-  height: 28rem;
+  min-height: 28rem;
   border-bottom: 1px solid var(--color-primary);
   font-size: 1.6rem;
   z-index: 1;
+}
+.summary h2 {
+  grid-column: 1/-1;
 }
 .btn-remove {
   position: absolute;
@@ -281,6 +286,26 @@ h2 {
   color: var(--color-text);
   height: 2.5rem;
   font-size: 2rem;
+}
+.summary .text-btn {
+  grid-column: 2/-1;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Statistics */
+.statistics {
+  grid-column: 1/-1;
+}
+.statistics h2 {
+  padding: 2rem;
+}
+.statistics li {
+  list-style: circle;
+  padding: 1rem 2rem 1rem 3rem;
+}
+.statistics li:last-child {
+  padding-top: 0;
 }
 
 /* Responsive design  */
