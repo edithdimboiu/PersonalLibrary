@@ -26,7 +26,10 @@ export default function Card({ book, handleOnClick }) {
         <div className="description">
           <h3>Description</h3>
           <p>{book.volumeInfo.description || "No description available"}</p>
-          <button className="btn" onClick={() => handleOnClick(book.id)}>
+          <button
+            className="btn text-btn"
+            onClick={() => handleOnClick(book.id)}
+          >
             Add to My library
           </button>
         </div>
