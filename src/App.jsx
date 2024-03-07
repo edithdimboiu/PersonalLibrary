@@ -45,7 +45,7 @@ export default function App() {
         <Section>
           {isLoading && <Loader />}
           {!isLoading && !error && (
-            <BookList books={books} handleOnCardClick={addToMyLibrary} />
+            <BookList books={books} handleOnClick={addToMyLibrary} />
           )}
           {error && <h2>There was an error!</h2>}
           {showAlert && (
