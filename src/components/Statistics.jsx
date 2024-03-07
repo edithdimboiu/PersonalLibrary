@@ -11,16 +11,18 @@ export default function Statistics({ readBooks, myLibrary }) {
     return accumulator;
   }, 0);
 
-  const investment = myLibrary.reduce((accumulator, book) => {
-    const price = book.saleInfo?.listPrice?.amount;
+  const investment = myLibrary
+    .reduce((accumulator, book) => {
+      const price = book.saleInfo?.listPrice?.amount;
 
-    if (price) {
-      accumulator += price;
-      countedMyLibraryBooks[book.id] = true;
-      booksWithPrice++;
-    }
-    return accumulator;
-  }, 0);
+      if (price) {
+        accumulator += price;
+        countedMyLibraryBooks[book.id] = true;
+        booksWithPrice++;
+      }
+      return accumulator;
+    }, 0)
+    .toFixed(2);
 
   const booksWithoutPrice = myLibrary.length - booksWithPrice;
   return (
