@@ -200,6 +200,11 @@ h2 {
   margin-top: 0.5rem;
   font-size: 1.4rem;
   font-weight: 400;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
 .release-date {
