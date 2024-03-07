@@ -36,6 +36,10 @@ export default function App() {
     }
   };
 
+  function handleRemoveBook(id) {
+    setMyLibrary(myLibrary.filter(book => book.id !== id));
+  }
+
   return (
     <>
       <Navigation numberResults={books.length}>
@@ -53,7 +57,7 @@ export default function App() {
           )}
         </Section>
         <Section>
-          <MyLibrary books={myLibrary} />
+          <MyLibrary books={myLibrary} handleRemoveBook={handleRemoveBook} />
         </Section>
       </Main>
     </>

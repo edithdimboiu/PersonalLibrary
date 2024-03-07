@@ -11,6 +11,7 @@
   --color-alert-primary: #f8d7da;
   --color-alert-secondary: #f5c6cb;
   --color-loader: #aab745;
+  --color-delete-button: #e26161;
 }
 
 /* #root {
@@ -269,6 +270,17 @@ h2 {
   border-bottom: 1px solid var(--color-primary);
   font-size: 1.6rem;
   z-index: 1;
+}
+.btn-remove {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--color-delete-button);
+  color: var(--color-text);
+  height: 2.5rem;
+  font-size: 2rem;
 }
 
 /* Responsive design  */

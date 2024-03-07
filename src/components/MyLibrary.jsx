@@ -1,7 +1,7 @@
 import MyLibraryCard from "./MyLibraryCard";
 import { useState } from "react";
 
-function MyLibrary({ books }) {
+function MyLibrary({ books, handleRemoveBook }) {
   const [readBooks, setReadBooks] = useState([]);
 
   const markAsRead = id => {
@@ -32,6 +32,7 @@ function MyLibrary({ books }) {
             key={book.id}
             readBooks={readBooks}
             markAsRead={markAsRead}
+            handleRemoveBook={handleRemoveBook}
           ></MyLibraryCard>
         ))}
       </ul>

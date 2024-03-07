@@ -1,7 +1,12 @@
 import { AiOutlineRead, AiFillRead } from "react-icons/ai";
 import noImage from "../assets/noImage.jpeg";
 
-export default function Card({ book, markAsRead, readBooks }) {
+export default function Card({
+  book,
+  markAsRead,
+  readBooks,
+  handleRemoveBook,
+}) {
   const isRead = readBooks.some(mark => mark.id === book.id);
 
   return (
@@ -20,6 +25,12 @@ export default function Card({ book, markAsRead, readBooks }) {
         )}
         <span>{`${book.volumeInfo.pageCount} pages`}</span>
       </p>
+      <button
+        className=" btn btn-remove"
+        onClick={() => handleRemoveBook(book.id)}
+      >
+        -
+      </button>
     </li>
   );
 }
