@@ -23,7 +23,11 @@ export default function Card({
         ) : (
           <AiOutlineRead size={30} onClick={() => markAsRead(book.id)} />
         )}
-        <span>{`${book.volumeInfo.pageCount} pages`}</span>
+        <span>
+          {book.volumeInfo.pageCount
+            ? `${book.volumeInfo.pageCount} pages`
+            : "Unknown number of pages"}
+        </span>
       </p>
       <button
         className=" btn btn-remove"
