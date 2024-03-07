@@ -9,6 +9,7 @@ import { useGet } from "./hooks/useGet";
 import Section from "./components/Section";
 import Alert from "./components/Alert";
 import MyLibrary from "./components/MyLibrary";
+import MyLibraryCard from "./components/MyLibraryCard";
 
 export default function App() {
   const [query, setQuery] = useState("");
@@ -16,6 +17,7 @@ export default function App() {
   const [myLibrary, setMyLibrary] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [readBooks, setReadBooks] = useState([]);
 
   function handleOnChange(e) {
     setQuery(e.target.value);
@@ -35,9 +37,20 @@ export default function App() {
       }, 5000);
     }
   };
+  const markAsRead = id => {
+    if (readBooks.some(book => book.id === id)) {
+      setReadBooks(readBooks.filter(book => book.id !== id)); //remove the book from readBooks if already marked as read
+    } else {
+      const bookToAdd = books.find(book => book.id === id);
+      if (bookToAdd) {
+        setReadBooks([...readBooks, bookToAdd]);
+      }
+    }
+  };
 
   function handleRemoveBook(id) {
     setMyLibrary(myLibrary.filter(book => book.id !== id));
+    setReadBooks(readBooks.filter(book => book.id !== id));
   }
 
   return (
@@ -57,7 +70,17 @@ export default function App() {
           )}
         </Section>
         <Section>
-          <MyLibrary books={myLibrary} handleRemoveBook={handleRemoveBook} />
+          <MyLibrary books={myLibrary} readBooks={readBooks}>
+            {myLibrary.map(book => (
+              <MyLibraryCard
+                book={book}
+                key={book.id}
+                readBooks={readBooks}
+                markAsRead={markAsRead}
+                handleRemoveBook={handleRemoveBook}
+              ></MyLibraryCard>
+            ))}
+          </MyLibrary>
         </Section>
       </Main>
     </>
