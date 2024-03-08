@@ -32,6 +32,7 @@ export default function Card({
           {book.saleInfo.saleability === "NOT_FOR_SALE"
             ? " No price details"
             : ""}
+          {book.saleInfo.saleability === "FREE" ? "Free" : ""}
         </span>
       </p>
 
