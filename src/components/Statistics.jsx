@@ -5,7 +5,7 @@ export default function Statistics({ readBooks, myLibrary }) {
 
   const readPages = readBooks.reduce((accumulator, book) => {
     if (!countedReadBooks[book.id]) {
-      accumulator += book.volumeInfo.pageCount;
+      accumulator += book.volumeInfo?.pageCount || 0;
       countedReadBooks[book.id] = true;
     }
     return accumulator;
