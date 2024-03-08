@@ -37,6 +37,7 @@ export default function App() {
       }, 5000);
     }
   };
+
   const markAsRead = id => {
     if (readBooks.some(book => book.id === id)) {
       setReadBooks(readBooks.filter(book => book.id !== id)); //remove the book from readBooks if already marked as read
@@ -55,11 +56,17 @@ export default function App() {
 
   return (
     <>
-      <Navigation numberResults={books.length}>
+      <Navigation numberResults={books?.length || 0}>
         <SearchInput query={query} handleOnChange={handleOnChange} />
       </Navigation>
       <Main>
         <Section>
+          {!books && (
+            <h2>
+              We are sorry, there are no results. Please try searching again by
+              another title or author.
+            </h2>
+          )}
           {isLoading && <Loader />}
           {!isLoading && !error && (
             <BookList books={books} handleOnClick={addToMyLibrary} />
