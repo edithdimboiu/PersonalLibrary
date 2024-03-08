@@ -28,7 +28,13 @@ export default function Card({
             ? `${book.volumeInfo.pageCount} pages`
             : "Unknown number of pages"}
         </span>
+        <span className="no-price">
+          {book.saleInfo.saleability === "NOT_FOR_SALE"
+            ? " No price details"
+            : ""}
+        </span>
       </p>
+
       <button
         className=" btn btn-remove"
         onClick={() => handleRemoveBook(book.id)}

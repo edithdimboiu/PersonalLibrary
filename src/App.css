@@ -298,6 +298,10 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
+.no-price {
+  margin-left: 2rem;
+}
+
 /* Statistics */
 .statistics {
   grid-column: 1/-1;
