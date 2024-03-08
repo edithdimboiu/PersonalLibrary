@@ -25,6 +25,7 @@ export default function Statistics({ readBooks, myLibrary }) {
     .toFixed(2);
 
   const booksWithoutPrice = myLibrary.length - booksWithPrice;
+
   return (
     <div className="statistics">
       <h2>Your readings in numbers</h2>
@@ -32,15 +33,21 @@ export default function Statistics({ readBooks, myLibrary }) {
         Until now you read <strong>{readPages} pages</strong>
       </li>
       <li>
-        You invested aproximately <strong>{investment} CHF</strong> in your
-        personal library. We can not give you the exact amount because{" "}
-        <strong>
-          {booksWithoutPrice === 1
-            ? "there is 1 book"
-            : `there are ${booksWithoutPrice} books`}{" "}
-          without price
-        </strong>{" "}
-        in our data.
+        You invested{" "}
+        {booksWithoutPrice !== 0 ? <strong>approximately</strong> : null}{" "}
+        <strong>{investment} CHF</strong> in your personal library.{" "}
+        {booksWithoutPrice !== 0 && (
+          <>
+            We cannot give you the exact amount because{" "}
+            <strong>
+              {booksWithoutPrice === 1
+                ? "there is 1 book"
+                : `there are ${booksWithoutPrice} books`}{" "}
+              without price
+            </strong>{" "}
+            in our data.
+          </>
+        )}
       </li>
     </div>
   );
