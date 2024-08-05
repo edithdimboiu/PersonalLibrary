@@ -1,10 +1,11 @@
 import Logo from "./Logo";
+import SearchInput from "./SearchInput";
 
-export default function Navigation({ children, numberResults }) {
+export default function Navigation({numberResults }) {
   return (
     <nav className="nav-bar">
       <Logo />
-      {children}
+      <SearchInput />
       <p className="num-results">
         Found <strong>{numberResults}</strong> results
       </p>

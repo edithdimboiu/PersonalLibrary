@@ -1,27 +1,17 @@
 import "./App.css";
 import Main from "./components/Main";
 import Navigation from "./components/Navigation";
-import SearchInput from "./components/SearchInput";
-import { useState } from "react";
 import BookList from "./components/BookList";
 import Loader from "./components/Loader";
-import { useGet } from "./hooks/useGet";
 import Section from "./components/Section";
 import Alert from "./components/Alert";
 import MyLibrary from "./components/MyLibrary";
 import MyLibraryCard from "./components/MyLibraryCard";
+import { useBooks } from "./hooks/useBooks";
 
 export default function App() {
-  const [query, setQuery] = useState("");
-  const { books, error, isLoading } = useGet(query);
-  const [myLibrary, setMyLibrary] = useState([]);
-  const [showAlert, setShowAlert] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
-  const [readBooks, setReadBooks] = useState([]);
+  const { books, error, isLoading, myLibrary, setMyLibrary, showAlert, setShowAlert, alertMessage, setAlertMessage, readBooks, setReadBooks } = useBooks();
 
-  function handleOnChange(e) {
-    setQuery(e.target.value);
-  }
   const addToMyLibrary = id => {
     const selectedBook = books.find(book => book.id === id);
     const isDuplicate = myLibrary.some(book => book.id === id);
@@ -56,36 +46,19 @@ export default function App() {
 
   return (
     <>
-      <Navigation numberResults={books?.length || 0}>
-        <SearchInput query={query} handleOnChange={handleOnChange} />
-      </Navigation>
+      <Navigation numberResults={books?.length || 0}></Navigation>
       <Main>
         <Section>
-          {!books && (
-            <h2>
-              We are sorry, there are no results. Please try searching again by
-              another title or author.
-            </h2>
-          )}
+          {!books && <h2>We are sorry, there are no results. Please try searching again by another title or author.</h2>}
           {isLoading && <Loader />}
-          {!isLoading && !error && (
-            <BookList books={books} handleOnClick={addToMyLibrary} />
-          )}
+          {!isLoading && !error && books && <BookList books={books} handleOnClick={addToMyLibrary} />}
           {error && <h2>There was an error!</h2>}
-          {showAlert && (
-            <Alert message={alertMessage} onClose={() => setShowAlert(false)} />
-          )}
+          {showAlert && <Alert message={alertMessage} onClose={() => setShowAlert(false)} />}
         </Section>
         <Section>
           <MyLibrary books={myLibrary} readBooks={readBooks}>
             {myLibrary.map(book => (
-              <MyLibraryCard
-                book={book}
-                key={book.id}
-                readBooks={readBooks}
-                markAsRead={markAsRead}
-                handleRemoveBook={handleRemoveBook}
-              ></MyLibraryCard>
+              <MyLibraryCard book={book} key={book.id} readBooks={readBooks} markAsRead={markAsRead} handleRemoveBook={handleRemoveBook}></MyLibraryCard>
             ))}
           </MyLibrary>
         </Section>
