@@ -1,12 +1,9 @@
 import { AiOutlineRead, AiFillRead } from "react-icons/ai";
 import noImage from "../assets/noImage.jpeg";
+import { useBooks } from "../hooks/useBooks";
 
-export default function Card({
-  book,
-  markAsRead,
-  readBooks,
-  handleRemoveBook,
-}) {
+export default function Card({ book }) {
+  const { readBooks, markAsRead, handleRemoveBook } = useBooks();
   const isRead = readBooks.some(mark => mark.id === book.id);
 
   return (
