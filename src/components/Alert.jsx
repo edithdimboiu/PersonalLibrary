@@ -1,3 +1,4 @@
+import React from "react";
 
 export default function Alert({ message, onClose }) {
   return (
